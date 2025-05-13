@@ -1,6 +1,6 @@
 
 import axios from "axios";
-const API_URL = "http://34fa-105-40-246-9.ngrok-free.app/api/index.php/orders";
+const API_URL = "http://c722-105-40-246-9.ngrok-free.app/api/index.php/orders";
 const DOLAPIKEY = "s2QFgR71ia3i07cbgmBU9ZD7YbM3WeU5";
 
 export async function sendOrder(cart, setCart, customerId, salesRepId, resetFilters) {

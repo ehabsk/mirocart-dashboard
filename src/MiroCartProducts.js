@@ -12,7 +12,7 @@ const MiroCartProducts = ({ cart, setCart, addToCart }) => {
   const [selectedSize, setSelectedSize] = useState("");
 
   useEffect(() => {
-    fetch("http://34fa-105-40-246-9.ngrok-free.app/api/index.php/products", {
+    fetch("http://c722-105-40-246-9.ngrok-free.app/api/index.php/products", {
       headers: {
         "DOLAPIKEY": "s2QFgR71ia3i07cbgmBU9ZD7YbM3WeU5",
       },
