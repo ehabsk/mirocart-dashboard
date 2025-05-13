@@ -2,19 +2,19 @@
   "rewrites": [
     {
       "source": "/api/products",
-      "destination": "https://8018-105-40-246-9.ngrok-free.app -> http://localhost:8088"
+      "destination": "https://81a1-105-40-246-9.ngrok-free.app -> http://localhost:8088"
     },
     {
       "source": "/api/orders",
-      "destination": "https://8018-105-40-246-9.ngrok-free.app -> http://localhost:8088"
+      "destination": "https://81a1-105-40-246-9.ngrok-free.app -> http://localhost:8088"
     },
     {
       "source": "/api/users",
-      "destination": "https://8018-105-40-246-9.ngrok-free.app -> http://localhost:8088"
+      "destination": "https://81a1-105-40-246-9.ngrok-free.app -> http://localhost:8088"
     },
     {
       "source": "/api/thirdparties",
-      "destination": "https://8018-105-40-246-9.ngrok-free.app -> http://localhost:8088"
+      "destination": "https://81a1-105-40-246-9.ngrok-free.app -> http://localhost:8088"
     }
   ]
 }
