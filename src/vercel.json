@@ -2,19 +2,19 @@
   "rewrites": [
     {
       "source": "/api/products",
-      "destination": "https://81a1-105-40-246-9.ngrok-free.app/api/index.php/products"
+      "destination": "https://8018-105-40-246-9.ngrok-free.app/api/index.php/products"
     },
     {
       "source": "/api/orders",
-      "destination": "https://81a1-105-40-246-9.ngrok-free.app/api/index.php/orders"
+      "destination": "https://8018-105-40-246-9.ngrok-free.app/api/index.php/orders"
     },
     {
       "source": "/api/users",
-      "destination": "https://81a1-105-40-246-9.ngrok-free.app/api/index.php/users"
+      "destination": "https://8018-105-40-246-9.ngrok-free.app/api/index.php/users"
     },
     {
       "source": "/api/thirdparties",
-      "destination": "https://81a1-105-40-246-9.ngrok-free.app/api/index.php/thirdparties"
+      "destination": "https://8018-105-40-246-9.ngrok-free.app/api/index.php/thirdparties"
     }
   ]
 }
