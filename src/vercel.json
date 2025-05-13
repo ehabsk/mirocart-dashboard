@@ -1,0 +1,13 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/products",
+      "destination": "https://c722-105-40-246-9.ngrok-free.app/api/index.php/products"
+    },
+    {
+      "source": "/api/orders",
+      "destination": "https://c722-105-40-246-9.ngrok-free.app/api/index.php/orders"
+    }
+  ]
+}
+
