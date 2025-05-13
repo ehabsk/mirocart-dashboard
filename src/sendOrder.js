@@ -3,6 +3,7 @@ import axios from "axios";
 const API_URL = "/api/orders?DOLAPIKEY=s2QFgR71ia3i07cbgmBU9ZD7YbM3WeU5";
 
 const DOLAPIKEY = "s2QFgR71ia3i07cbgmBU9ZD7YbM3WeU5";
+      Accept: "application/json"
 
 export async function sendOrder(cart, setCart, customerId, salesRepId, resetFilters) {
   try {

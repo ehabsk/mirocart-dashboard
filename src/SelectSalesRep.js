@@ -5,7 +5,8 @@ const SelectSalesRep = ({ selectedRep, onChange }) => {
   const [salesReps, setSalesReps] = useState([]);
   const [loading, setLoading] = useState(true);
   const DOLIBARR_API_URL = "/api/users"; // تأكد من المسار
-  const DOLAPIKEY = "s2QFgR71ia3i07cbgmBU9ZD7YbM3WeU5"; // ← حط المفتاح الصحيح هنا أو من config
+  const DOLAPIKEY = "s2QFgR71ia3i07cbgmBU9ZD7YbM3WeU5";
+        Accept: "application/json" // ← حط المفتاح الصحيح هنا أو من config
 
   useEffect(() => {
     const fetchSalesReps = async () => {

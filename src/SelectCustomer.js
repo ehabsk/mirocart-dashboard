@@ -9,7 +9,8 @@ const SelectCustomer = ({ selectedCustomer, onChange }) => {
       try {
         const response = await axios.get("/api/thirdparties", {
           headers: {
-            "DOLAPIKEY": "s2QFgR71ia3i07cbgmBU9ZD7YbM3WeU5"  // 🔁 استبدلها بمفتاحك الفعلي
+            "DOLAPIKEY": "s2QFgR71ia3i07cbgmBU9ZD7YbM3WeU5",  
+            Accept: "application/json" // 🔁 استبدلها بمفتاحك الفعلي
           }
         });
         setCustomers(response.data);

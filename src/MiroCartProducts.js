@@ -15,6 +15,7 @@ const MiroCartProducts = ({ cart, setCart, addToCart }) => {
     fetch("/api/products", {
       headers: {
         "DOLAPIKEY": "s2QFgR71ia3i07cbgmBU9ZD7YbM3WeU5",
+        Accept: "application/json"
       },
     })
       .then((response) => response.json())
