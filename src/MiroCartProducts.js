@@ -11,20 +11,35 @@ const MiroCartProducts = ({ cart, setCart, addToCart }) => {
   const [selectedStrength, setSelectedStrength] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
 
-  useEffect(() => {
-    fetch("/api/products", {
-      headers: {
-        "DOLAPIKEY": "s2QFgR71ia3i07cbgmBU9ZD7YbM3WeU5",
-        Accept: "application/json"
-      },
+  seEffect(() => {
+  fetch("/api/products", {
+    headers: {
+      "DOLAPIKEY": "s2QFgR71ia3i07cbgmBU9ZD7YbM3WeU5",
+      Accept: "application/json"
+    }
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new Error("Expected JSON response, got something else");
+      }
+      return response.json();
     })
-      .then((response) => response.json())
-      .then((data) => {
+    .then((data) => {
+      if (Array.isArray(data)) {
         setOriginalProducts(data);
         setProducts(data);
-      })
-      .catch((error) => console.error("خطأ في تحميل المنتجات:", error));
-  }, []);
+      } else {
+        console.error("Unexpected data format", data);
+      }
+    })
+    .catch((error) => {
+      console.error("فشل تحميل المنتجات:", error);
+    });
+}, []);
 
   const parseLabel = (label) => {
     const parts = label.split("|").map(p => p.trim());
