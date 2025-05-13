@@ -11,7 +11,7 @@ const MiroCartProducts = ({ cart, setCart, addToCart }) => {
   const [selectedStrength, setSelectedStrength] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
 
-  seEffect(() => {
+  useEffect(() => {
   fetch("/api/products", {
     headers: {
       "DOLAPIKEY": "s2QFgR71ia3i07cbgmBU9ZD7YbM3WeU5",
