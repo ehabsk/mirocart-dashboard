@@ -2,19 +2,19 @@
   "rewrites": [
     {
       "source": "/api/products",
-      "destination": "https://8018-105-40-246-9.ngrok-free.app/api/index.php/products"
+      "destination": "https://mirocart.ngrok.io/api/$1"
     },
     {
       "source": "/api/orders",
-      "destination": "https://8018-105-40-246-9.ngrok-free.app/api/index.php/orders"
+      "destination": "https://mirocart.ngrok.io/api/$1"
     },
     {
       "source": "/api/users",
-      "destination": "https://8018-105-40-246-9.ngrok-free.app/api/index.php/users"
+      "destination": "https://mirocart.ngrok.io/api/$1"
     },
     {
       "source": "/api/thirdparties",
-      "destination": "https://8018-105-40-246-9.ngrok-free.app/api/index.php/thirdparties"
+      "destination": "https://mirocart.ngrok.io/api/$1"
     }
   ]
 }
