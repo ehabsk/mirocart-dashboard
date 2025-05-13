@@ -1,0 +1,59 @@
+
+import axios from "axios";
+
+const API_URL = "http://localhost:8088/api/index.php/orders";
+const DOLAPIKEY = "M0L6lO8Dqh68jRGivY7cCt5To6MrjK41";
+
+const sendOrder = async (cart, setCart) => {
+  if (!cart || cart.length === 0) {
+    alert("السلة فاضية 😅");
+    return;
+  }
+
+  const orderData = {
+    socid: 1,
+    date: Math.floor(Date.now() / 1000), // ✅ التاريخ بصيغة Unix timestamp
+    lines: cart.map((item) => ({
+      fk_product: item.id,
+      qty: item.qty,
+      subprice: parseFloat(item.cost_price) || 100,
+      tva_tx: 0,
+      total_ht: (parseFloat(item.cost_price) || 100) * item.qty,
+      total_tva: 0,
+      total_ttc: (parseFloat(item.cost_price) || 100) * item.qty,
+    })),
+  };
+
+  try {
+    const response = await axios.post(API_URL, orderData, {
+      headers: {
+        "Content-Type": "application/json",
+        DOLAPIKEY,
+      },
+    });
+
+    console.log("✅ تم إرسال الطلب بنجاح:", response.data);
+    alert("✅ تم إرسال الطلب بنجاح!");
+    setCart([]);
+
+    return response.data;
+
+  } catch (error) {
+    console.error("❌ فشل إرسال الطلب:", error.message);
+
+    if (error.response) {
+      console.error("📛 Status Code:", error.response.status);
+      console.error("📩 Response Data:", JSON.stringify(error.response.data, null, 2));
+    } else if (error.request) {
+      console.error("📡 No response received:", error.request);
+    } else {
+      console.error("⚙️ Error setting up request:", error.message);
+    }
+
+    alert("❌ حصل خطأ أثناء إرسال الطلب!");
+    throw new Error("طلب الإرسال فشل");
+  }
+};
+
+export default sendOrder;
+

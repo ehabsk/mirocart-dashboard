@@ -1,0 +1,26 @@
+{
+  "socid": 2,
+  "date": 1715458800,
+  "fk_user_author": 4,
+  "lines": [
+    {
+      "fk_product": 91430,
+      "qty": 10,
+      "subprice": 100,
+      "tva_tx": 0,
+      "total_ht": 1000,
+      "total_tva": 0,
+      "total_ttc": 1000,
+      "product_type": 0,
+      "desc": "طلب تيليجرام على المنتج رقم 91430",
+      "remise_percent": 0,
+      "info_bits": 0,
+      "fk_remise_except": null,
+      "date_start": "",
+      "date_end": "",
+      "fk_unit": null,
+      "rang": 0,
+      "special_code": 0
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+
+import React, { useEffect, useState } from "react";
+import ProductCard from "./ProductCard";
+import axios from "axios";
+import sendOrder from "./sendOrder";
+
+
+const DOLAPIKEY = "نننننننننننننننننننن";
+
+function MiroCart() {
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get("http://localhost:8088/api/index.php/products", {
+          headers: {
+            "DOLAPIKEY": DOLAPIKEY
+          }
+        });
+        setProducts(res.data);
+      } catch (error) {
+        console.error("❌ Error fetching products:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const addToCart = (product, quantity) => {
+    setCart((prev) => {
+      const index = prev.findIndex((item) => item.id === product.id);
+      if (index !== -1) {
+        const updated = [...prev];
+        updated[index].quantity += quantity;
+        return updated;
+      }
+      return [...prev, { ...product, quantity }];
+    });
+  };
+
+  const sendOrder = async () => {
+    if (cart.length === 0) {
+      alert("السلة فاضية 😅");
+      return;
+    }
+
+   
+
+      const response = await fetch("http://localhost:8088/api/index.php/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "DOLAPIKEY": DOLAPIKEY
+        },
+        body: JSON.stringify(orderData)
+      });
+
+      if (!response.ok) throw new Error("طلب الإرسال فشل");
+
+      alert("✅ تم إرسال الطلب بنجاح!");
+      setCart([]);
+    };
+     catch (error) {
+      console.error("❌ فشل إرسال الطلب:", error);
+      alert("❌ حصل خطأ أثناء إرسال الطلب.");
+    }
+  };
+
+  return (
+    <div className="p-4">
+      <div className="flex justify-between items-center bg-gray-100 p-4 rounded mb-4 shadow">
+        <h1 className="text-xl font-bold">🛒 MiroCart - سلة ذكية لمتجرك</h1>
+        <button
+          className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+          onClick={() => sendOrder(cart, setCart)}
+        >
+          إرسال الطلب ({cart.reduce((sum, item) => sum + item.quantity, 0)} صنف)
+        </button>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} addToCart={addToCart} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default MiroCart;

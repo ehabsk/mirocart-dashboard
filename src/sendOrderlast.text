@@ -1,0 +1,60 @@
+
+import axios from "axios";
+
+const API_URL = "http://127.0.0.1:8088/api/index.php/orders";
+const DOLAPIKEY = "M0L6lO8Dqh68jRGivY7cCt5To6MrjK41";  // Replace with your real API key
+
+const sendOrder = async (cart, salesRepId, customerId) => {
+  if (!cart || cart.length === 0) {
+    alert("❌ لا يوجد منتجات في السلة.");
+    return;
+  }
+
+  if (!salesRepId || !customerId) {
+    alert("❌ يجب اختيار اسم المندوب والعميل.");
+    return;
+  }
+
+  const orderData = {
+    socid: customerId,
+    user_author_id: salesRepId,
+
+    date: Math.floor(Date.now() / 1000),
+    lines: cart.map(item => ({
+      fk_product: item.id,
+      qty: item.qty,
+      subprice: parseFloat(item.cost_price) || 100,
+      tva_tx: 0,
+      total_ht: (parseFloat(item.cost_price) || 100) * item.qty,
+      total_tva: 0,
+      total_ttc: (parseFloat(item.cost_price) || 100) * item.qty,
+      product_type: 0,
+      desc: item.label || `طلب منتج رقم ${item.id}`,
+      remise_percent: 0,
+      info_bits: 0,
+      fk_remise_except: null,
+      date_start: "",
+      date_end: "",
+      fk_unit: null,
+      rang: 0,
+      special_code: 0
+    }))
+  };
+
+  try {
+    const response = await axios.post(API_URL, orderData, {
+      headers: {
+        "DOLAPIKEY": DOLAPIKEY,
+        "Content-Type": "application/json"
+      }
+    });
+    console.log("✅ تم إرسال الطلب:", response.data);
+    alert("✅ تم إرسال الطلب!");
+    return response.data;
+  } catch (error) {
+    console.error("❌ فشل في إرسال الطلب:", error);
+    alert("❌ فشل في إرسال الطلب. راجع الكونسول للتفاصيل.");
+  }
+};
+
+export default sendOrder;
