@@ -7,7 +7,7 @@ const SelectCustomer = ({ selectedCustomer, onChange }) => {
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
-        const response = await axios.get("http://192.168.1.159:8088/api/index.php/thirdparties", {
+        const response = await axios.get("/api/thirdparties", {
           headers: {
             "DOLAPIKEY": "s2QFgR71ia3i07cbgmBU9ZD7YbM3WeU5"  // 🔁 استبدلها بمفتاحك الفعلي
           }

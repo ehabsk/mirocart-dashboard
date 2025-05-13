@@ -7,6 +7,14 @@
     {
       "source": "/api/orders",
       "destination": "https://c722-105-40-246-9.ngrok-free.app/api/index.php/orders"
+    },
+    {
+      "source": "/api/users",
+      "destination": "https://c722-105-40-246-9.ngrok-free.app/api/index.php/users"
+    },
+    {
+      "source": "/api/thirdparties",
+      "destination": "https://c722-105-40-246-9.ngrok-free.app/api/index.php/thirdparties"
     }
   ]
 }
